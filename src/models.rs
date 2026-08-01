@@ -1,10 +1,6 @@
 use serde::Deserialize;
 
-<<<<<<< HEAD
-#[derive(Debug, Deserialize)]
-=======
 #[derive(Debug, Clone, Deserialize)]
->>>>>>> 126e2a1 (esp_live: multi-tab TUI dota tracker with SQLite caching)
 pub struct ProMatch {
     pub match_id: i64,
     pub duration: i64,
@@ -15,9 +11,6 @@ pub struct ProMatch {
     pub dire_name: Option<String>,
     pub league_name: Option<String>,
     pub radiant_win: bool,
-<<<<<<< HEAD
-}
-=======
 }
 
 impl ProMatch {
@@ -113,4 +106,3 @@ impl TeamStat {
         }
     }
 }
->>>>>>> 126e2a1 (esp_live: multi-tab TUI dota tracker with SQLite caching)

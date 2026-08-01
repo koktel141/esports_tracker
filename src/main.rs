@@ -144,9 +144,6 @@ fn spawn_pro_refresh(pool: SqlitePool, tx: mpsc::Sender<RefreshMsg>) {
     });
 }
 
-/// Spawns a background task that fetches live matches. Failures are dropped
-/// silently: the pro-match refresh already surfaces network problems in the
-/// status bar, and live matches are supplementary.
 fn spawn_live_refresh(tx: mpsc::Sender<RefreshMsg>) {
     tokio::spawn(async move {
         if let Ok(matches) = api::fetch_live_matches().await {
@@ -195,8 +192,6 @@ fn handle_key(code: KeyCode, modifiers: KeyModifiers, state: &mut AppState) -> b
         _ => {}
     }
 
-    // Debounce navigation/action keys so terminal key-repeat or duplicate
-    // press/release events don't trigger the same action several times.
     if state.is_repeat(code) {
         return false;
     }
